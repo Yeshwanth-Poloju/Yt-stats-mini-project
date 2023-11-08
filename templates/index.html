@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html style="font-size:10px;font-family: Roboto, Arial, sans-serif;" lang="en"> 
+<!--font for youtube Roboto if it doesnt work sans-serif-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script>
+        function page_redirect(){
+            window.location = 'https://github.com/PlumEvo/';
+        }
+    </script>
+    <!--importing fonts and icons for youtube default- source google !!!-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+    <!--Linking Styles sheet (CSS)-->
+    <style>
+      /*importing fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/*<--set their margin and padding to 0--> i.e reset html deafult styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Roboto - default youtube style or sans-serif*/
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header { /*header section*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 15px;
+}
+
+main { 
+    height: calc(100vh - 70px); /*v stands for viewpoint*/
+    display: flex; 
+    background-color: #f9f9f9;
+}
+
+/* Sidebar */ 
+.side-bar {
+    height: 100%;
+    width: 27%;
+    background-color: white;
+    overflow-y: hidden;
+}
+
+@media (max-width: 769px){
+    .side-bar{
+        display: none;
+    }
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.left #menu {
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.search {
+    display: flex;
+    margin:auto;
+}
+
+.search form {
+    display: flex;
+    border: 1px solid #ddd;
+    height: 45px;
+}
+
+.search input {
+    width: 600px;
+    padding: 10px;
+    border: 0;
+    height: 100%;
+    border-radius: 2px 0 0 2px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #ddd;
+}
+
+.search button {
+    height: 100%;
+    width: 60px;
+    border: none;
+}
+
+.mic{
+    margin-top: 10px;
+}
+
+.material-icons{
+    color: rgb(100,100,100);
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+}
+  
+.nav-link span {
+    margin-left: 15px;
+}
+  
+.nav-link:hover {
+   background: #e5e5e5;
+   cursor: pointer;
+}
+
+.active {
+    background: #e5e5e5;
+}
+
+hr {
+    height: 1px;
+    background-color: #e5e5e5;
+    border: none;
+}
+.content {
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    padding: 15px 15px;
+    border-top: 1px solid #ddd;
+    overflow-y: scroll;
+}
+  
+.videos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+  
+.video {
+    width: 270px;
+    margin-bottom: 30px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 170px;
+}
+  
+.thumbnail img {
+    object-fit: cover;
+    height: 94%;
+    width: 100%;
+    border-radius: 25px;
+}
+.author img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+.details {
+    display: flex;
+}
+   
+.title {
+    display: flex;
+    flex-direction: column;
+}
+   
+.title h3 {
+    color: rgb(3, 3, 3);
+    line-height: 18px;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+   
+.title a,
+  span {
+    text-decoration: none;
+    color: rgb(96, 96, 96);
+    font-size: 12px;
+}
+.buttonload {
+    display: flex;
+    margin-right: 10px;
+    border: none; /* Remove borders */
+    color: rgb(68, 67, 67); /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 36px /* Set a font size */
+  }
+    </style>
+    
+    <!--Title had a youtube icon so...-->
+    <title>Youtube</title>
+    <link rel="icon" href="https://www.youtube.com/s/desktop/f06ee14b/img/favicon.ico"/> 
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+ 
+<!--Header Defined-->
+<header>
+    <!--icons are imported by CSS element mentioned in head-->
+    <!--header contains three sections or parts - left (yt logo and menu) , middle(form of search with mic right next to it) , left (video , apps , notification bell)-->
+    <div class="logo left">
+        <!--left (yt logo and menu)-->
+        <i id="menu" class="material-icons">menu</i>
+        <img src="https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg" height="7%" width="7%">
+        
+        <!--middle (search form with mic button)-->
+        <div class="search center">
+            <form action="/analyze" method="POST">
+               <input type="text" placeholder="Enter the video url here" name="url" class="input"/>
+               <button><i class="material-icons">search</i></button>
+            </form>
+             <i class="material-icons mic">mic</i>
+        </div>
+        
+        <!--Right side-->
+        <div class="icons right">
+            <i class="material-icons">videocam</i>
+            <i class="material-icons">apps</i>
+            <i class="material-icons">notifications</i>
+            <i class="material-icons">account_icon</i>
+        </div>
+    </div>
+</header>
+<!--Header ends-->
+
+
+<main>
+<!--now main section contains two parts one where side menu appears and another for contents and videos-->
+
+<div class=”side-bar”>
+        <!--making side bar home - icon + content init-->
+        <div class="nav">
+            <a class="nav-link active" onclick="page_redirect()">
+                <i class="material-icons">home</i>
+                <span>Home</span> <!--span can be put into div's and ezier to css with-->
+            </a>
+            <a class="nav-link">
+                <i class="material-icons">local_fire_department</i>
+                <span>Trending</span>
+            </a>
+            <a class="nav-link">
+                <i class="material-icons">subscriptions</i>
+                <span>Subscriptions</span>
+            </a>
+        </div>
+            
+        <!--there was a hr or line divide between the two section-->
+        <hr>
+        <a class="nav-link">
+            <i class="material-icons">library_add_check</i>
+            <span>Library</span>
+        </a>
+        <a class="nav-link">
+            <i class="material-icons">history</i>
+            <span>History</span>
+        </a>
+        <a class="nav-link">
+            <i class="material-icons">play_arrow</i>
+            <span>Your Videos</span>
+        </a>
+        <a class="nav-link">
+            <i class="material-icons">watch_later</i>
+            <span>Watch Later</span>
+        </a>
+        <a class="nav-link">
+            <i class="material-icons">thumb_up</i>
+            <span>Liked Videos</span>
+        </a>
+</div>
+        
+<div class="videos">
+        <!-- a video starts -->
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/3QvUtMoEgUg/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCaiMSm-vQDRV6JyUCTUEz1-0ELkA" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/ytc/AMLnZu_-XxX1PRjLfpIQ0rsxy-x53hpfy-JTOH81iG1ufw=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Death.
+                        </h3>
+                        <a href="">Aperture
+                        </a>
+                        <span> 1.3M Views • 11 Months Ago </span>
+                    </div>
+                </div>
+        </div><!-- a video Ends -->
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/GWGbOjlJDkU/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDIk9IvR88j1PgJ0y__mE-Dpxg6nQ" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/7leYSRRXg87DVSsa4fiL5Jm4TIOz5bx9rrzRmfr5J2Lg6k91C3rcKmKL2wIRKS1uBBS8ooB6Lg=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Who are you?
+                        </h3>
+                        <a href="">Our Animated Box
+                        </a>
+                        <span> 13M Views • 2 Years Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/mxLgbKMRHHQ/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBjUOpmi89fMY99n_li4lIcUqW3eQ" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/83JvYUBJgIl8IsAEpql4MDfpSxv6mk5uPrdGBlhM5Cld_kbX5ihUyz_87Dp2ls6WyfwJdk2E8Q=s88-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            you're in an empty minecraft place for 10 hours, 1 minute and 33 seconds
+                        </h3>
+                        <a href="">nobody
+                        </a>
+                        <span> 625K Views • 5 Months Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/d4H1wEE5IdI/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLC0yx1iZzYvVjxHGLuF0wH1IyWVCA" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/ytc/AMLnZu-Kj9xuEE4vGXnUZu5NAZmwkb227xrXe8F_F9lcmA=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            What James Webb Saw Near the Edge of the Universe | James Webb Part 1
+                        </h3>
+                        <a href="">Astrum
+                        </a>
+                        <span> 1M Views • 6 Days Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/RZdfE_7cde0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCujNEq_hw5f-2XEEPF64DiyafLIA" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/ytc/AMLnZu8yom5b-UaFsF-ONX0N7DUwQPl-iGWhXYp2-6vhwQ=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Is reality real? These neuroscientists don't think so | Big Think
+                        </h3>
+                        <a href="">Big Think 
+                        </a>
+                        <span> 2.2M Views • 1 Year Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/cmpg-qiPYa8/hqdefault.jpg?sqp=-oaymwEjCOADEI4CSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAbqzxItxOj-pYYAfHPp3t40vThIQ" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/ytc/AMLnZu-U4DvsUnHiX6GguvzP8fKkcrzcvZrFVN1VNKCHGQ=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Bad Apple!! but it's a VS Code Auto-Formatter
+                        </h3>
+                        <a href="">Junferno 
+                        </a>
+                        <span> 388K Views • 1 Year Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <iframe width="270px" height="90%" src="https://www.youtube.com/embed/uXh6U1T-c-w" title="How a Dog astronaut started the Space Race" modestbrading="0" controls="0"></iframe>
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/ytc/AMLnZu_yOWuWSME2NfMi6oY6j5j7wD_EwAEZOuAnZqdlyQ=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            How a Dog astronaut started the Space Race
+                        </h3>
+                        <a href="">Disrupt 
+                        </a>
+                        <span> 19K Views • 1 Day Ago </span>
+                    </div>
+                </div>
+        </div>
+        <div class="video">
+            <div class="thumbnail">
+                <img src="https://i.ytimg.com/vi/92YPpnz8m1o/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBwxyb3uj0cB-euqVbuLtwRZM85SQ" alt="" />
+            </div>
+                <div class="details">
+                    <div class="author">
+                        <img src="https://yt3.ggpht.com/7SA-HV_W8L2buzyMfZ7srjj7E3SpgMwwNk8X9M3Ttk5Wa2P0jo2wM7pBROZjhzdub1z-B-d0Rw=s68-c-k-c0x00ffffff-no-rj" alt="" />
+                    </div>
+                    <div class="title">
+                        <h3>
+                            Monster - The Psychology of Johan Liebert (Anime's Greatest Villain)
+                        </h3>
+                        <a href="">Max Derrat 
+                        </a>
+                        <span> 312K Views • 4 months Ago </span>
+                    </div>
+                </div>
+        </div>
+</div>
+</main>
+</body>
+</html>
